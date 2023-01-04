@@ -1,4 +1,4 @@
-const API_KEY = "CWB-25142137-EFE4-4F9E-9B46-D41BF5BD73D5"
+const API_KEY = "CWB-8E2F7118-4F42-45DE-A9F5-75A7A2EB1994"
 const WEATHER_API = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=" + API_KEY + "&locationName="
 const weaklyWeather = document.querySelector("#weekly_weather")
 
