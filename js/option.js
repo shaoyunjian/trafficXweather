@@ -121,10 +121,14 @@ function test2(){
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
-createElement(stationDiv, "div", "searchChoose")
-createElement(searchChoose, "div", "searchRailway","台鐵")
-createElement(searchChoose, "div", "searchHighspeedrail","高鐵")
-createElement(searchChoose, "div", "searchWeather","天氣")
+// createElement(stationDiv, "div", "searchChoose")
+// createElement(searchChoose, "div", "searchRailway","台鐵")
+// createElement(searchChoose, "div", "searchHighspeedrail","高鐵")
+// createElement(searchChoose, "div", "searchWeather","天氣")
+
+let searchRailway = document.getElementById("searchRailway")
+let searchHighspeedrail = document.getElementById("searchHighspeedrail")
+let searchWeather = document.getElementById("searchWeather")
 
 searchRailway.addEventListener("click",clickRailway)
 searchHighspeedrail.addEventListener("click",clickHighspeedrail)
@@ -165,10 +169,16 @@ function clickWeather(){
 }
 
 function createData(){
-    if (startStationValue == null){
-        document.getElementById("startStation").textContent = "未選擇";
+    startStation.style.color = "black"
+    terminalStation.style.color = "black"
+    if (startStationValue == null || terminalStationValue == null){
+        if (startStationValue == null){
+            document.getElementById("startStation").textContent = "未選擇";
+            startStation.style.color = "red"
+        }
         if (terminalStationValue == null){
             document.getElementById("terminalStation").textContent = "未選擇";
+            terminalStation.style.color = "red"
         }
         return data = {"error":true}
     }
