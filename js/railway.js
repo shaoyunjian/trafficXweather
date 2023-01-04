@@ -35,7 +35,7 @@ async function railway() {
   highspeedrail.style.display="none"
   weather.style.display="none"
   railway.style.display="block"
-  
+
   const railway_short_drive_time = document.querySelectorAll("#railway_short_drive_time")[0]
   const railway_long_drive_time = document.querySelectorAll("#railway_long_drive_time")[0]
   const railway_short_drive_price =document.querySelectorAll("#railway_short_drive_price")[0]
@@ -170,4 +170,4 @@ async function getTimeApiResponse(priceUrl, direction,todayString) {
       });
       return res
   }
-railway();
+// railway();
