@@ -4,32 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>交通天氣查詢 trafficXweather</title>
-    <link rel="stylesheet" href="./css/option.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/weather.css">
 </head>
 <body>
     <nav>
         <div id="title">
-            交通天氣查詢 trafficXweather
+            交通天氣查詢
         </div>
     </nav>
     <main>
         <div id="station">
-            <div id="start">
+            <div class="ui buttons">
+                <div class="ui tag large label">
+                    起始站
+                </div>
+                <div class="or" data-text="：">
+                </div>
+                <select id="start" class="ui olive button">
 
+                </select>
             </div>
-            <div id="terminal">
+            <div class="ui buttons">
+                <div class="ui tag large label">
+                    終點站
+                </div>
+                <div class="or" data-text="：">
+                </div>
+                <select id="terminal" class="ui olive button">
+
+                </select>
+            </div>
 
             </div>
         </div>
         <div id="option">
-            <div id="search_railway">
+            <div id="search_railway" class="ui teal basic button">
                 台鐵
             </div>
-            <div id="search_weather">
+            <div id="search_weather" class="ui violet basic button">
                 天氣
             </div>
-            <div id="search_highspeedrail">
+            <div id="search_highspeedrail" class="ui orange basic button">
                 高鐵
             </div>
 
@@ -69,7 +87,7 @@
 
     </main>
 
-    <script src="./js/jquery.js"></script>
+    
     <script src="./js/railway.js"></script>
     <script src="./js/weather.js"></script>
     <script src="./js/highspeedrail.js"></script>

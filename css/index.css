@@ -1,0 +1,48 @@
+body{
+    display: grid;
+    justify-content: center;
+    grid-template-rows: 90px auto;
+}
+
+main{
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    row-gap: 20px;
+}
+
+nav{
+    height: 60px;
+    margin-bottom: 20px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;    
+    font-weight: 700;
+    color: #666;
+    box-shadow: 0 2px 2px -1px rgba(6,6,6,0.4);
+}
+
+#station{
+    height: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    justify-content: center;
+    column-gap: 20px;
+}
+
+#option{
+    height: 35px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 10px;
+    grid-template-rows: 1fr;
+}
+
+option{
+    cursor: pointer;
+}
+
+
+
