@@ -26,10 +26,12 @@ nav{
 #station{
     height: 40px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 30px 1fr;
     grid-template-rows: 1fr;
     justify-content: center;
+    align-items: center;
     column-gap: 20px;
+    margin-bottom: 10px;
 }
 
 #option{
@@ -45,39 +47,50 @@ option{
 }
 
 #container{
+    border-radius: 5px;
+    background-color: 	#faf9f3;
+    height: fit-content;
+    margin-top: 20px;
     display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 100%;
+    width: 600px;
+    justify-items: center;
 }
 
 #railway{
-    display: grid;
+    width: 250px;
+    height: 150px;
+    display: none;
     grid-template-rows: repeat(3,1fr);
 }
 #highspeedrail{
-    
+    width: 250px;
+    height: 150px;
+    display: none;
+    grid-template-rows: repeat(3,1fr);
 }
 #weather{
-    
+    width: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
 }
 
-#time_label{
+.time_label,#railway_drive_time,#railway_drive_price,#highspeedrail_drive_time,#highspeedrail_drive_price{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-#railway_drive_time{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-}
 
-#railway_drive_price{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+.time_label > div, #railway_drive_time > div, #railway_drive_price > div, #highspeedrail_drive_time > div, #highspeedrail_drive_price > div{
+    justify-self: center;
+    align-self: center;
 }
 
 #weekly_weather{
-    width: 600px;
+    width: 100%;
+    text-align: center;
+    
+    
 }
 
 
