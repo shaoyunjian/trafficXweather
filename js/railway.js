@@ -1,6 +1,6 @@
-async function railway() {
-  data = { start: "台北站", terminal: "雲林站", search: "railway" };
-
+async function getRailway(data) {
+  // data = { start: "台北站", terminal: "雲林站", search: "railway" };
+  if(data["start"]){
   const stations = {
     南港站: "0980",
     台北站: "1000",
@@ -39,12 +39,14 @@ async function railway() {
   const railway_short_drive_time = document.querySelectorAll("#railway_short_drive_time")[0]
   const railway_long_drive_time = document.querySelectorAll("#railway_long_drive_time")[0]
   const railway_short_drive_price =document.querySelectorAll("#railway_short_drive_price")[0]
-  const railway_long_drive_price = document.querySelectorAll("railway_long_drive_price")[0]
+  const railway_long_drive_price = document.querySelectorAll("#railway_long_drive_price")[0]
 
   railway_short_drive_time.textContent=price["lowerest_price"]
   railway_long_drive_time.textContent=price["highest_price"]
   railway_short_drive_price.textContent=time["lowerest_time"]
   railway_long_drive_price.textContent=time["highest_time"]
+}
+else{}
 }
 
 async function getAcessToken() {
@@ -110,8 +112,8 @@ async function getPriceApiResponse(priceUrl, direction) {
         }
       });
       const price = {
-        lowerest_price: lowerest_price,
-        highest_price: highest_price,
+        lowerest_price: `${lowerest_price}元`,
+        highest_price: `${highest_price}元`,
       };
       return price;
     });
@@ -138,7 +140,6 @@ async function getTimeApiResponse(priceUrl, direction,todayString) {
       .then((response) => {
         let lowerest_time = 1000000;
         let highest_time = 0;
-        console.log(response["TrainTimetables"])
         const [year, month, day] = todayString.split('-');
         const seconds="00"
         response["TrainTimetables"].forEach((element) => {
@@ -170,4 +171,4 @@ async function getTimeApiResponse(priceUrl, direction,todayString) {
       });
       return res
   }
-// railway();
+//getRailway({ start: "台北站", terminal: "雲林站", search: "railway" });
