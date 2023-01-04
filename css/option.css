@@ -1,0 +1,101 @@
+body{
+    margin: 0; /* 不要留白 */
+    background-color: #d7d7d7fa;
+}
+
+nav #title{
+    /* Freeze Top */
+    display: flex;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    /* Position */
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+    height: 54px;
+    background-color: #FFFFFF;
+    border: 1px solid #E8E8E8;
+    margin:0px;
+}
+
+main #station{
+    display: flex;
+    justify-content: center;
+    width: auto;
+    z-index: 0;
+}
+
+#start,
+#terminal{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 300px;
+    /* background-color: aquamarine; */
+    cursor: pointer;
+}
+#startTitle,
+#startStation,
+#terminalTitle,
+#terminalStation{
+    width: 100px;
+    background-color: #445566
+}
+
+/* Choose Station */
+#stationStartNameDiv,
+#stationterminalNameDiv{
+    display: none;
+    position: absolute;
+    z-index: 10;
+    grid-template-columns: repeat(3, 1fr);
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+
+}
+#stationStartNameDiv{
+    left: 35%;
+}
+#stationterminalNameDiv{
+    right: 15%;
+}
+
+
+
+.stationStartName,
+.stationterminalName{
+    display: flex;
+    margin: auto;
+    background-color: antiquewhite;
+    height: 40px;
+    width: 60px;
+    cursor: pointer;
+    color: #000000;
+    font-family: "Noto Sans TC";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#searchChoose{
+    position: absolute;
+    display: flex;
+    top:200px;
+    z-index: 20;
+}
+
+#searchRailway,
+#searchHighspeedrail,
+#searchWeather{
+    padding: 10px;
+    margin: 10px;
+    background-color: #fd9d9d;
+    cursor: pointer;
+}
