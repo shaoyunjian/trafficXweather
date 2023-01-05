@@ -8,7 +8,8 @@ async function setToken() {
 
 async function getRailway(data) {
   // data = { start: "台北站", terminal: "雲林站", search: "railway" };
-  if (data["start"]) {
+  
+  if (data["start"]!=data["terminal"]) {
     const stations = {
       南港站: "0980",
       台北站: "1000",
@@ -67,6 +68,13 @@ async function getRailway(data) {
     railway_short_drive_price.textContent = price["highest_price"];
     railway_long_drive_price.textContent = price["lowerest_price"];
   } else {
+    const railway = document.querySelectorAll("#railway")[0];
+    const highspeedrail = document.querySelectorAll("#highspeedrail")[0];
+    const weather = document.querySelectorAll("#weather")[0];
+
+    highspeedrail.style.display = "none";
+    weather.style.display = "none";
+    railway.style.display = "none";
   }
 }
 
