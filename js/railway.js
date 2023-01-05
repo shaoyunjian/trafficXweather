@@ -1,3 +1,12 @@
+
+let accesstoken
+
+setToken()
+
+async function setToken(){
+  accesstoken= await getAcessToken()
+}
+
 async function getRailway(data) {
   // data = { start: "台北站", terminal: "雲林站", search: "railway" };
   if(data["start"]){
@@ -25,8 +34,9 @@ async function getRailway(data) {
   if (terminal - start > 0) {
     direction = 1;
   }
-  let price = await getPriceApiResponse(priceUrl, direction);
-  let time = await getTimeApiResponse(distanceUrl, direction,todayString);
+  console.log(accesstoken)
+  let price = await getPriceApiResponse(priceUrl, direction,accesstoken);
+  let time = await getTimeApiResponse(distanceUrl, direction,todayString,accesstoken);
 
   const railway =document.querySelectorAll("#railway")[0]
   const highspeedrail =document.querySelectorAll("#highspeedrail")[0]
@@ -79,17 +89,14 @@ async function getAcessToken() {
   });
 }
 
-async function getPriceApiResponse(priceUrl, direction) {
-  const accesstoken = await getAcessToken();
-  //   console.log(accesstoken["access_token"])
+async function getPriceApiResponse(priceUrl, direction,accesstoken) {
   const myHeaders = new Headers();
   myHeaders.append(
-    "authorization-type",
-    `Bearer ${accesstoken["access_token"]}`
-  );
+    "authorization",`Bearer ${accesstoken["access_token"]}`
+);
   const requestOptions = {
     method: "GET",
-    headers: myHeaders,
+    headers:myHeaders,
   };
   const res = await fetch(priceUrl, requestOptions)
     .then((response) => {
@@ -121,13 +128,10 @@ async function getPriceApiResponse(priceUrl, direction) {
 }
 
 
-async function getTimeApiResponse(priceUrl, direction,todayString) {
-    const accesstoken = await getAcessToken();
-    //   console.log(accesstoken["access_token"])
+async function getTimeApiResponse(priceUrl, direction,todayString,accesstoken) {
     const myHeaders = new Headers();
     myHeaders.append(
-      "authorization-type",
-      `Bearer ${accesstoken["access_token"]}`
+      "authorization",`Bearer ${accesstoken["access_token"]}`
     );
     const requestOptions = {
       method: "GET",
