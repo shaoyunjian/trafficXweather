@@ -72,8 +72,11 @@ function clickRailway(){
     searchValue = "railway"
     data = createData()
     getRailway(data) 
-    if (data.error == true){
+    if (data.error == true || startStationValue == terminalStationValue){
         preload.style.display = "grid"
+        railway.style.display = "none"
+        highspeedrail.style.display = "none"
+        weather.style.display = "none"
     }else{
         preload.style.display = "none"
         railway.style.display = "grid"
@@ -85,8 +88,11 @@ function clickHighspeedrail(){
     searchValue = "highspeedrail"
     data = createData()
     getHighspeedrail(data)
-    if (data.error == true){
+    if (data.error == true || startStationValue == terminalStationValue){
         preload.style.display = "grid"
+        railway.style.display = "none"
+        highspeedrail.style.display = "none"
+        weather.style.display = "none"
     }else{
         preload.style.display = "none"
         railway.style.display = "none"
@@ -98,8 +104,11 @@ function clickWeather(){
     searchValue = "weather"
     data = createData()
     getWeather(data)
-    if (data.error == true){
+    if (data.error == true || startStationValue == terminalStationValue){
         preload.style.display = "grid"
+        railway.style.display = "none"
+        highspeedrail.style.display = "none"
+        weather.style.display = "none"
     }else{
         preload.style.display = "none"
         railway.style.display = "none"
@@ -121,6 +130,9 @@ let data = {
 function createData(){
     startStationValue = start.value;
     terminalStationValue = terminal.value;
+    if (startStationValue == terminalStationValue){
+        alarm.textContent = "起始站 及 終點站 重複了";
+    }
     if (startStationValue == "未選擇" || terminalStationValue == "未選擇"){        
         if (startStationValue == "未選擇"){
             alarm.textContent = "請選擇 起始站";
