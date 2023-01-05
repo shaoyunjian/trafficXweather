@@ -41,10 +41,10 @@ async function getRailway(data) {
   const railway_short_drive_price =document.querySelectorAll("#railway_short_drive_price")[0]
   const railway_long_drive_price = document.querySelectorAll("#railway_long_drive_price")[0]
 
-  railway_short_drive_time.textContent=price["lowerest_price"]
-  railway_long_drive_time.textContent=price["highest_price"]
-  railway_short_drive_price.textContent=time["lowerest_time"]
-  railway_long_drive_price.textContent=time["highest_time"]
+  railway_short_drive_time.textContent=time["lowerest_time"]
+  railway_long_drive_time.textContent=time["highest_time"]
+  railway_short_drive_price.textContent=price["lowerest_price"]
+  railway_long_drive_price.textContent=price["highest_price"]
 }
 else{}
 }
@@ -161,10 +161,14 @@ async function getTimeApiResponse(priceUrl, direction,todayString) {
             highest_time=periodTime
           }
         })
+        
         let lowerest_hr = Math.floor(lowerest_time/3600)
         let lowerest_minute = Math.ceil(((lowerest_time/3600)-lowerest_hr)*60)
         let highest_hr = Math.floor(highest_time/3600)
         let highest_minute = Math.ceil(((highest_time/3600)-highest_hr)*60)
+        if(lowerest_hr<0){
+          lowerest_hr=lowerest_hr+24
+        }
         return {"lowerest_time":`${lowerest_hr}小時${lowerest_minute}分`,"highest_time":`${highest_hr}小時${highest_minute}分`}
 
        
