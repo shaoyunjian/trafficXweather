@@ -56,6 +56,14 @@ option{
     justify-items: center;
 }
 
+#preload{
+    display: grid;
+}
+
+#alarm{
+    
+}
+
 #railway{
     width: 250px;
     height: 150px;
