@@ -1,139 +1,114 @@
 let stationDiv = document.getElementById("station")
 let start = document.getElementById("start")
 let terminal = document.getElementById("terminal")
+let searchRailway = document.getElementById("search_railway")
+let searchHighspeedrail = document.getElementById("search_highspeedrail")
+let searchWeather = document.getElementById("search_weather")
+let railway = document.getElementById("railway")
+let highspeedrail = document.getElementById("highspeedrail")
+let weather = document.getElementById("weather")
+let preload = document.getElementById("preload")
+let alarm = document.getElementById("alarm")
 
-let station = {
-    "0":"南港站",
-    "1":"台北站",
-    "2":"板橋站",
-    "3":"桃園站",
-    "4":"新竹站",
-    "5":"苗栗站",
-    "6":"台中站",
-    "7":"彰化站",
-    "8":"雲林站",
-    "9":"嘉義站",
-    "10":"台南站",
-    "11":"左營站",
-}
-
-// creat element
-function createElement(appendBlock, elementStyle, elementName, elementText = null){
+// creat element Function
+function createElement(appendBlock, elementStyle, addId = null, addClass = null, addText = null){
     element = document.createElement(elementStyle);
-    element.setAttribute("id",elementName);
-    element.setAttribute("class",elementName);     
+    if (addId != null){
+        element.setAttribute("id",addId);
+    }
+    if (addClass != null){
+        element.setAttribute("class",addClass);   
+    }
     if (elementStyle == "img"){
-        element.src = elementText;
+        element.src = addText;
     }
     else{
-        element.textContent = elementText;
+        element.textContent = addText;
     }
     appendBlock.appendChild(element);
-    globalThis.elementName = document.getElementById(elementName)
+    globalThis.addId = document.getElementById(addId)
 }
-
- 
+// Identify station
+let station = {
+    "0":"未選擇",
+    "1":"南港站",
+    "2":"台北站",
+    "3":"板橋站",
+    "4":"桃園站",
+    "5":"新竹站",
+    "6":"苗栗站",
+    "7":"台中站",
+    "8":"彰化站",
+    "9":"雲林站",
+    "10":"嘉義站",
+    "11":"台南站",
+    "12":"左營站",
+}
+// Init page
+loadInPage()
 createStation()
+
+function loadInPage(){
+    preload.style.display = "grid"
+    railway.style.display = "none"
+    highspeedrail.style.display = "none"
+    weather.style.display = "none"
+}
 function createStation(){
-    createElement(start, "div", "startTitle","起始站：")
-    createElement(start, "div", "startStation","請選擇")
-    createElement(terminal, "div", "terminalTitle","終點站：")
-    createElement(terminal, "div", "terminalStation","請選擇")
-    createElement(stationDiv, "div", "stationStartNameDiv")
-    createElement(stationDiv, "div", "stationterminalNameDiv")
     for (i=0;i<Object.keys(station).length;i++){
-        createElement(stationStartNameDiv, "div", `stationStartName${i}`, station[i])
-        eval(`stationStartName${i}`).setAttribute("class","stationStartName");
-        element.setAttribute("onclick","startStationClick(this)"); 
-        createElement(stationterminalNameDiv, "div", `stationterminalName${i}`, station[i])
-        eval(`stationterminalName${i}`).setAttribute("class","stationterminalName");
-        element.setAttribute("onclick","terminalStationClick(this)"); 
+        createElement(start, "option", `stationStartName`, null, station[i])
+        createElement(terminal, "option", `stationterminalName`, null, station[i])
     }
 }
-// Click to show station
-document.addEventListener("click", function () {
-    closeStation();
-}, false);
-start.addEventListener("click", function (ev) {
-    // clickSearchBarCount();
-    showStartStation();    
-    ev.stopPropagation();
-}, false);
-terminal.addEventListener("click", function (ev) {
-    // clickSearchBarCount();
-    showTerminalStation();    
-    ev.stopPropagation();
-}, false);
-
-// click to show on searchbar
-stationStartNameDiv.addEventListener("click", function (ev) {
-    console.log("in1")
-    startStationChosen();
-    closeStation()
-    ev.stopPropagation();
-}, false);
-
-stationterminalNameDiv.addEventListener("click", function (ev) {
-    terminalStationChosen();
-    closeStation()
-    ev.stopPropagation();
-}, false);
-
-// ====
-function startStationChosen(){
-    document.getElementById("startStation").textContent = startStationChosenText;
-    startStationValue = startStationChosenText
-}
-function terminalStationChosen(){
-    document.getElementById("terminalStation").textContent = terminalStationChosenText;
-    terminalStationValue = terminalStationChosenText
-}
-
-let startStationChosenText = "";
-function startStationClick(element){ 
-    startStationChosenText = element.innerHTML;
-}
-let terminalStationChosenText = "";
-function terminalStationClick(element){ 
-    terminalStationChosenText = element.innerHTML;
-}
-
-// Station show or none
-function closeStation(){
-    stationStartNameDiv.style.display = "none";
-    stationterminalNameDiv.style.display = "none";
-}
-function showStartStation(){
-    stationStartNameDiv.style.display = "grid";
-}
-function showTerminalStation(){
-    stationterminalNameDiv.style.display = "grid";
-}
-
-
-
-function show(){
-    stationStartNameDiv.style.display = "grid";
-}
-function test2(){
-    stationterminalNameDiv.style.display = "none";
-}
-
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-
-// createElement(stationDiv, "div", "searchChoose")
-// createElement(searchChoose, "div", "searchRailway","台鐵")
-// createElement(searchChoose, "div", "searchHighspeedrail","高鐵")
-// createElement(searchChoose, "div", "searchWeather","天氣")
-
-let searchRailway = document.getElementById("searchRailway")
-let searchHighspeedrail = document.getElementById("searchHighspeedrail")
-let searchWeather = document.getElementById("searchWeather")
-
+// =-=-=-=-=-=-=-=|Control button |=-=-=-=-=-=-=-=-=-
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 searchRailway.addEventListener("click",clickRailway)
 searchHighspeedrail.addEventListener("click",clickHighspeedrail)
 searchWeather.addEventListener("click",clickWeather)
 
+// Button action
+function clickRailway(){
+    searchValue = "railway"
+    data = createData()
+    getRailway(data) 
+    if (data.error == true){
+        preload.style.display = "grid"
+    }else{
+        preload.style.display = "none"
+        railway.style.display = "grid"
+        highspeedrail.style.display = "none"
+        weather.style.display = "none"
+    }   
+}
+function clickHighspeedrail(){
+    searchValue = "highspeedrail"
+    data = createData()
+    getHighspeedrail(data)
+    if (data.error == true){
+        preload.style.display = "grid"
+    }else{
+        preload.style.display = "none"
+        railway.style.display = "none"
+        highspeedrail.style.display = "grid"
+        weather.style.display = "none"
+    }
+}
+function clickWeather(){
+    searchValue = "weather"
+    data = createData()
+    getWeather(data)
+    if (data.error == true){
+        preload.style.display = "grid"
+    }else{
+        preload.style.display = "none"
+        railway.style.display = "none"
+        highspeedrail.style.display = "none"
+        weather.style.display = "grid"
+    }
+}
+
+// Init the return data
 let startStationValue = null
 let terminalStationValue = null
 let searchValue = null
@@ -142,54 +117,26 @@ let data = {
     "terminal":terminalStationValue,
     "search":searchValue
 }
-
-function clickRailway(){
-    searchValue = "railway"
-    searchRailway.style.backgroundColor = "#ff4242"
-    searchHighspeedrail.style.backgroundColor = "#fd9d9d"
-    searchWeather.style.backgroundColor = "#fd9d9d"
-    data = createData()
-    getRailway(data)    
-}
-function clickHighspeedrail(){
-    searchValue = "highspeedrail"
-    searchRailway.style.backgroundColor = "#fd9d9d"
-    searchHighspeedrail.style.backgroundColor = "#ff4242"
-    searchWeather.style.backgroundColor = "#fd9d9d"
-    data = createData()
-    getHighspeedrail(data)
-}
-function clickWeather(){
-    searchValue = "weather"
-    searchRailway.style.backgroundColor = "#fd9d9d"
-    searchHighspeedrail.style.backgroundColor = "#fd9d9d"
-    searchWeather.style.backgroundColor = "#ff4242"
-    data = createData()
-    getWeather(data)
-}
-
+// Create return data
 function createData(){
-    startStation.style.color = "black"
-    terminalStation.style.color = "black"
-    if (startStationValue == null || terminalStationValue == null){
-        if (startStationValue == null){
-            document.getElementById("startStation").textContent = "未選擇";
-            startStation.style.color = "red"
+    startStationValue = start.value;
+    terminalStationValue = terminal.value;
+    if (startStationValue == "未選擇" || terminalStationValue == "未選擇"){        
+        if (startStationValue == "未選擇"){
+            alarm.textContent = "請選擇 起始站";
         }
-        if (terminalStationValue == null){
-            document.getElementById("terminalStation").textContent = "未選擇";
-            terminalStation.style.color = "red"
+        if (terminalStationValue == "未選擇"){
+            alarm.textContent = "請選擇 終點站";
         }
+        if (startStationValue == "未選擇" && terminalStationValue == "未選擇"){
+            alarm.textContent = "請選擇 起始站 及 終點站";
+        }
+        alarm.style.color = "red"
         return data = {"error":true}
     }
-
     return data = {
         "start":startStationValue,
         "terminal":terminalStationValue,
         "search":searchValue
     }
 }
-
-
-
-
