@@ -134,11 +134,19 @@ body{
 
 @media (max-width:800px){
     main{
-        width: 90%;
+        width: 100%;
     }
 
     #container{
         width: 100%;
+    }
+
+    #station{
+        width: 90%;
+    }
+
+    #option{
+        width: 90%;
     }
 
     
