@@ -35,7 +35,7 @@ nav{
 }
 
 
-#start_label,#terminal_label{
+#start,#terminal,#start_label,#terminal_label{
     display: flex;
     align-items: center;
     justify-content: center;
