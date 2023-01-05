@@ -34,6 +34,13 @@ nav{
     margin-bottom: 10px;
 }
 
+
+#start_label,#terminal_label{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #option{
     height: 35px;
     display: grid;
@@ -58,20 +65,29 @@ option{
 
 #preload{
     display: grid;
+    height: 200px;
+    padding-top: 20px;
+    padding-top: 20px;
+    grid-template-rows: 1fr 1fr;
+}
+
+#introduce{
+    height: 50px;
 }
 
 #alarm{
-    
+    height: 50px;
+    display: none;
 }
 
 #railway{
-    width: 250px;
+    width: auto;
     height: 150px;
     display: none;
     grid-template-rows: repeat(3,1fr);
 }
 #highspeedrail{
-    width: 250px;
+    width: auto;
     height: 150px;
     display: none;
     grid-template-rows: repeat(3,1fr);
@@ -92,6 +108,9 @@ option{
 .time_label > div, #railway_drive_time > div, #railway_drive_price > div, #highspeedrail_drive_time > div, #highspeedrail_drive_price > div{
     justify-self: center;
     align-self: center;
+    text-align: center;
+    width: 100px;
+    height: 30px;
 }
 
 #weekly_weather{
