@@ -34,7 +34,7 @@ async function getRailway(data) {
   
   highspeedrail.style.display="none"
   weather.style.display="none"
-  railway.style.display="block"
+  railway.style.display="grid"
 
   const railway_short_drive_time = document.querySelectorAll("#railway_short_drive_time")[0]
   const railway_long_drive_time = document.querySelectorAll("#railway_long_drive_time")[0]
