@@ -65,8 +65,18 @@ function getHighspeedrail(station_data) {
     // ========== functions ==========
     // v2/Rail/THSR/Station 取得車站基本資料
     function getTHSRStationInfo() {
+      const myHeaders = new Headers();
+      myHeaders.append(
+        "authorization",
+        `Bearer ${accesstoken["access_token"]}`
+      );
+      const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+      };
       fetch(
-        "https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/Station?%24top=100&health=false&%24format=JSON"
+        "https://tdx.transportdata.tw/api/basic/v2/Rail/THSR/Station?%24top=100&health=false&%24format=JSON",
+        requestOptions
       )
         .then((response) => {
           return response.json();
@@ -93,7 +103,16 @@ function getHighspeedrail(station_data) {
         "/to/" +
         allStation[destinationStation] +
         "?%24top=1000&%24format=JSON";
-      fetch(ticket_api_url)
+      const myHeaders = new Headers();
+      myHeaders.append(
+        "authorization",
+        `Bearer ${accesstoken["access_token"]}`
+      );
+      const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+      };
+      fetch(ticket_api_url, requestOptions)
         .then((response) => {
           return response.json();
         })
@@ -111,8 +130,8 @@ function getHighspeedrail(station_data) {
           //TicketType：1:'一般票(單程票)',2:'來回票',3:'電子票証(悠遊卡/一卡通)',4:'回數票',5:'定期票(30天期)',6:'定期票(60天期)',7:'早鳥票',8:'團體票'
           //FareClass：1:'成人',2:'學生',3:'孩童',4:'敬老',5:'愛心',6:'愛心孩童',7:'愛心優待/愛心陪伴',8:'軍警',9:'法優'
           //CabinClass：1:'標準座車廂',2:'商務座車廂',3:'自由座車廂'
-          HIGHSPEEDRAIL_LONG_DRIVE_PRICE.innerHTML = ticketFare;
-          HIGHSPEEDRAIL_SHORT_DRIVE_PRICE.innerHTML = ticketFare;
+          HIGHSPEEDRAIL_LONG_DRIVE_PRICE.innerHTML = ticketFare + "元";
+          HIGHSPEEDRAIL_SHORT_DRIVE_PRICE.innerHTML = ticketFare + "元";
         });
     }
 
@@ -127,7 +146,16 @@ function getHighspeedrail(station_data) {
         "/" +
         today +
         "?%24top=1000&%24format=JSON";
-      fetch(time_api_url)
+      const myHeaders = new Headers();
+      myHeaders.append(
+        "authorization",
+        `Bearer ${accesstoken["access_token"]}`
+      );
+      const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+      };
+      fetch(time_api_url, requestOptions)
         .then((response) => {
           return response.json();
         })
@@ -164,9 +192,9 @@ function getHighspeedrail(station_data) {
             let min_minutes = Math.floor(minDiff_diff / 1000 / 60);
 
             HIGHSPEEDRAIL_LONG_DRIVE_TIME.innerHTML =
-              max_hours + " 時 " + max_minutes + " 分";
+              max_hours + "小時" + max_minutes + "分";
             HIGHSPEEDRAIL_SHORT_DRIVE_TIME.innerHTML =
-              min_hours + " 時 " + min_minutes + " 分";
+              min_hours + "小時" + min_minutes + "分";
           }
         });
     }
