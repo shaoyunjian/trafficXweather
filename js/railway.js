@@ -34,7 +34,7 @@ async function getRailway(data) {
   
   highspeedrail.style.display="none"
   weather.style.display="none"
-  railway.style.display="block"
+  railway.style.display="grid"
 
   const railway_short_drive_time = document.querySelectorAll("#railway_short_drive_time")[0]
   const railway_long_drive_time = document.querySelectorAll("#railway_long_drive_time")[0]
@@ -43,8 +43,8 @@ async function getRailway(data) {
 
   railway_short_drive_time.textContent=time["lowerest_time"]
   railway_long_drive_time.textContent=time["highest_time"]
-  railway_short_drive_price.textContent=price["lowerest_price"]
-  railway_long_drive_price.textContent=price["highest_price"]
+  railway_short_drive_price.textContent=price["highest_price"]
+  railway_long_drive_price.textContent=price["lowerest_price"]
 }
 else{}
 }
