@@ -34,7 +34,6 @@ async function getRailway(data) {
   if (terminal - start > 0) {
     direction = 1;
   }
-  console.log(accesstoken)
   let price = await getPriceApiResponse(priceUrl, direction,accesstoken);
   let time = await getTimeApiResponse(distanceUrl, direction,todayString,accesstoken);
 
