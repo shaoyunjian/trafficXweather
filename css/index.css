@@ -66,7 +66,7 @@ body{
 
     #container{
         padding-top: 20px;
-        padding-bottom: 20px;
+        padding-bottom: 40px;
         border-radius: 5px;
         background-color: 	#faf9f3;
         height: fit-content;
@@ -98,8 +98,9 @@ body{
 
     #railway_title,#highspeedrail_title{
         text-align: center;
-        font-weight: 700;
-        color: rgb(135, 135, 135);
+        font-size: 22px;
+        font-weight: bold;
+        margin: 10px 0;
     }
 
     #railway{
@@ -168,7 +169,6 @@ body{
     #preload{
         width: 90%;
     }
-
 
 
 }
