@@ -29,7 +29,7 @@ async function getRailway(data) {
     const dateobj = new Date();
     const todayString = dateobj.toISOString().split("T")[0];
     const priceUrl = `https://tdx.transportdata.tw/api/basic/v3/Rail/TRA/ODFare/${start}/to/${terminal}?%24top=30&%24format=JSON`;
-    const distanceUrl = `https://tdx.transportdata.tw/api/basic/v3/Rail/TRA/DailyTrainTimetable/OD/${start}/to/${terminal}/2023-01-04?%24top=100&%24format=JSON`;
+    const distanceUrl = `https://tdx.transportdata.tw/api/basic/v3/Rail/TRA/DailyTrainTimetable/OD/${start}/to/${terminal}/${todayString}?%24top=100&%24format=JSON`;
     let direction = 0;
     if (terminal - start > 0) {
       direction = 1;
