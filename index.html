@@ -4,61 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>交通天氣查詢 trafficXweather</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/weather.css">
 </head>
 <body>
     <nav>
         <div id="title">
-            交通天氣查詢 trafficXweather
+            交通天氣查詢
         </div>
     </nav>
     <main>
         <div id="station">
-            <div id="start">
-
+            <div class="ui buttons">
+                <div class="ui tag large label" id="start_label">
+                    起站
+                </div>
+                <div class="or" data-text="：">
+                </div>
+                <select id="start" class="ui teal button">               
+                </select>
             </div>
-            <div id="terminal">
+            <i class="angle double right big teal icon"></i>
+            <div class="ui buttons">
+                <div class="ui tag large label" id="terminal_label">
+                    迄站
+                </div>
+                <div class="or" data-text="：">
+                </div>
+                <select id="terminal" class="ui teal button">
+                </select>
+            </div>
 
             </div>
         </div>
         <div id="option">
-            <div id="railway">
+            <div id="search_railway" class="ui blue inverted button">
                 台鐵
             </div>
-            <div id="weather">
+            <div id="search_weather" class="ui purple inverted button">
                 天氣
             </div>
-            <div id="highspeedrail">
+            <div id="search_highspeedrail" class="ui orange inverted button">
                 高鐵
             </div>
 
         </div>
         <div id="container">
-            <div id="railway">
-                <div id="railway_dirve_time">
-                    <div id="railway_short_drive_time"></div>
-                    <div id="railway_long_drive_time"></div>
+            <div id="preload">
+                <div id="alarm" class="ui negative message">
+                    請輸入 起始站、終點站 及 想查詢的項目
                 </div>
-                <div id="railway_dirve_price">
-                    <div id="railway_short_drive_price"></div>
-                    <div id="railway_long_drive_price"></div>
+                <div id="introduce" class="ui info message">
+                    想去哪？搭什麼去？在地天氣是如何？<br>
+                    trafficXweather 一鍵搜尋 快狠準！
+                </div>
+                
+            </div>
+            <div id="railway">
+                <div id="railway_title">台鐵資訊查詢結果</div>
+                <div class="time_label">
+                    <div></div>
+                    <div class="ui yellow large label">時間最短</div>
+                    <div class="ui olive large label">時間最長</div>
+                </div>
+                <div id="railway_drive_time">
+                    <div class="ui gray large label">車程</div>
+                    <div id="railway_short_drive_time" class="ui gray basic large label"></div>
+                    <div id="railway_long_drive_time" class="ui gray basic large label"></div>
+                </div>
+                <div id="railway_drive_price">
+                    <div class="ui gray large label">票價</div>
+                    <div id="railway_short_drive_price" class="ui gray basic large label"></div>
+                    <div id="railway_long_drive_price" class="ui gray basic large label"></div>
                 </div>
             </div>
 
             <div id="weather">
-                <div id="weekly_weather">
-                    
+                <div id="weekly_weather"> 
                 </div>
 
             </div>
 
             <div id="highspeedrail">
-                <div id="highspeedrail_dirve_time">
-                    <div id="highspeedrail_short_drive_time"></div>
-                    <div id="highspeedrail_long_drive_time"></div>
+                <div id="highspeedrail_title">高鐵資訊查詢結果</div>
+                <div class="time_label">
+                    <div></div>
+                    <div class="ui yellow large label">時間最短</div>
+                    <div class="ui olive large label">時間最長</div>
                 </div>
-                <div id="highspeedrail_dirve_price">
-                    <div id="highspeedrail_short_drive_price"></div>
-                    <div id="highspeedrail_long_drive_price"></div>
+                <div id="highspeedrail_drive_time">
+                    <div class="ui gray large label">車程</div>
+                    <div id="highspeedrail_short_drive_time" class="ui gray basic large label"></div>
+                    <div id="highspeedrail_long_drive_time" class="ui gray basic large label"></div>
+                </div>
+                <div id="highspeedrail_drive_price">
+                    <div class="ui gray large label">票價</div>
+                    <div id="highspeedrail_short_drive_price" class="ui gray basic large label"></div>
+                    <div id="highspeedrail_long_drive_price" class="ui gray basic large label"></div>
                 </div>
             </div>
         
@@ -67,10 +112,10 @@
 
     </main>
 
-    <script src="/js/railway.js"></script>
-    <script src="/js/weather.js"></script>
-    <script src="/js/highspeedrail.js"></script>
-    <script src="/js/option.js"></script>
+    <script src="./js/railway.js"></script>
+    <script src="./js/weather.js"></script>
+    <script src="./js/highspeedrail.js"></script>
+    <script src="./js/option.js"></script>
 
     
 </body>

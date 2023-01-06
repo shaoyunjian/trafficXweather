@@ -1,0 +1,18 @@
+.weather-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.daily-weather-title {
+  font-size: bold;
+}
+
+.daily-weather,
+.daily-weather-title {
+  line-height: 40px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  text-align: center;
+}
